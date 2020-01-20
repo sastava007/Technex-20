@@ -18,9 +18,9 @@ def get_image():
 	filename=(".\\images\\%scar.jpg",carNum)
 
 	return send_file(filename, mimetype="image/jpg")
-@app.route("/overspeeding_vehicles"):
+# @app.route("/overspeeding_vehicles"):
 
-def 
+
 
 if __name__ == '__main__':
 
