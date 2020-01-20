@@ -27,6 +27,7 @@ constructor() public {
     }
 
     function addCandidate (string memory _name) private {
+       
         candidatesCount ++;
         candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
     }

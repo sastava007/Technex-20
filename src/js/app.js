@@ -1,7 +1,9 @@
 App = {
   web3Provider: null,
   contracts: {},
-  account: '0xD54aD0A16e480E21b62c5Bf047bBA54e25778352',
+  // account: '0xe9DaE588F7C8C2eDc93C025d52d64827e8491b0E',
+  account: '0x9C426dfDD731c429D0A16B6e57Ba5a3f2662F44C',
+
   hasVoted: false,
 
   init: function() {
@@ -52,14 +54,16 @@ App = {
     });
   },
 
-  render: function() {
+  render: async function() {
     var electionInstance;
     var loader = $("#loader");
     var content = $("#content");
 
     loader.show();
     content.hide();
-
+    // web3.eth.getAccounts().then(function(accounts) {
+    //   console.log(accounts);
+    // })
     // Load account data
     // web3.eth.getCoinbase(function(err, account) {
     //   if (err === null) {
@@ -68,17 +72,21 @@ App = {
     //     $("#accountAddress").html("Your Account: " + account);
     //   }
     // });
-
+    // const accounts=await web3.eth.getAccounts();
+    // console.log(accounts)
+// console.log(app)
     // Load contract data
     App.contracts.Election.deployed().then(function(instance) {
       electionInstance = instance;
+      console.log(instance)
+      // console.log(instance.candidatesCount())
       return electionInstance.candidatesCount();
     }).then(function(candidatesCount) {
       var candidatesResults = $("#candidatesResults");
       candidatesResults.empty();
       var candidatesSelect = $('#candidatesSelect');
       candidatesSelect.empty();
-
+      console.log(candidatesCount)
       for (var i = 1; i <= candidatesCount; i++) {
         electionInstance.candidates(i).then(function(candidate) {
     
