@@ -1,0 +1,16 @@
+{
+    "members":[
+        {
+            "plate_num":"12345",
+            "name":"shivam",
+            "hash_code":"123456",
+            "gmail_id":"xyz@gmail.com"
+        },
+        {
+            "plate_num":"123456",
+            "name":"shivam ag",
+            "hash_code":"1234567",
+            "gmail_id":"xyza@gmail.com"
+        }
+    ]    
+}
