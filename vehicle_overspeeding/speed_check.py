@@ -10,14 +10,15 @@ import json
 from flask import Response
 from flask import Flask
 from flask import render_template
+from flask import make_response, send_file
 from threading import Thread, Condition
 import random
 import queue
 from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+# cors = CORS(app)
+# app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 carCascade = cv2.CascadeClassifier('myhaar.xml')
@@ -34,7 +35,9 @@ MAX_NUM_THREADS=4
 
 lock=threading.Lock()
 vehicles=queue.Queue(maxsize=50)
-
+vehicles.put(2)
+vehicles.put(3)
+vehicles.put(4)
 
 resultImage=[]
 
@@ -284,13 +287,33 @@ def video_feed():
 
 
 @app.route('/getImages',methods=['GET'])
-@cross_origin()
+# @cross_origin()
 def get_image():
-	carNum=vehicles.get()
-	filename=("..\\images\\%scar.jpg",carNum)
-	response = make_response(send_file(filename))
-	response.headers['Access-Control-Allow-Origin'] = '*'
-	return response
+		# filename=("..\\images\\2car.jpg")
+		# response = make_response(send_file(filename))
+		# response.headers['Access-Control-Allow-Origin'] = '*'
+		# response.headers['Content-Type']='image/jpg'
+		# return response,200
+		
+
+	if not vehicles.empty(): 
+		carNum=vehicles.get()
+	
+		
+		
+		# filename=("..\\images\\%scar.jpg",carNum)
+		# response = make_response(send_file(filename, mimetype="image/jpg"))
+		# response.headers['Content-Type']='image/jpg'
+		# response.headers['mimetype']="image/jpg"
+		# response.headers['Access-Control-Allow-Origin'] = '*'
+		
+
+		
+		return (str(carNum),200)
+	else:
+		return (str(-1), 204)
+
+	
 	# return send_file(filename, mimetype="image/jpg", )
     
 
