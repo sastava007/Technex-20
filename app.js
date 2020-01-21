@@ -25,9 +25,9 @@ var transporter = nodemailer.createTransport({
 
 const mailOptions={
     from:'sg98272252555@gmail.com',
-    to: 'prajwal714singh@gmail.com',
+    to: 'imt_2018094@iiitm.ac.in',
     subject:'Blockchain checking',
-    html: '<p>Hello world</p>'
+    html: '<p>You are fined because you exceed the limit of speed.<br><h4>confimation details</h4><br><h4>Name:'+ jsonContent.members[0].name +'</h4><br><h4>Plate number:'+ jsonContent.members[0].name+'</h4><br><h4>Hash code:'+jsonContent.members[0].name +'</h4><br><a href="http://localhost:3000/">Click here to pay challan</a></p>'
 }
 transporter.sendMail(mailOptions,function(err,info){
     if(err)
