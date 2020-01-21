@@ -1,7 +1,17 @@
 @import '~antd/dist/antd.css';
 
-
+.slick-list{
+  width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+;
+}
 .App {
+  
+  /* font-family: "Bangers"; */
+  font-size: "45px";
+  color: "white";
+  
   text-align: center;
   background: #000c17;
 }
