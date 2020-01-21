@@ -2,7 +2,7 @@ App = {
   web3Provider: null,
   contracts: {},
   // account: '0xe9DaE588F7C8C2eDc93C025d52d64827e8491b0E',
-  account: '0x9C426dfDD731c429D0A16B6e57Ba5a3f2662F44C',
+  account: '0x4D19e47F0C68764c182E7D7B8381CB0665364952',
 
   hasVoted: false,
 
@@ -87,26 +87,31 @@ App = {
       var candidatesSelect = $('#candidatesSelect');
       candidatesSelect.empty();
       console.log(candidatesCount)
-      for (var i = 1; i <= candidatesCount; i++) {
+      for (var i = 1; i <= 1; i++) {
         electionInstance.candidates(i).then(function(candidate) {
     
           var id = candidate[0];
           var name = candidate[1];
           var voteCount = candidate[2];
+          var gmail= "xyz@gmail.com";
+          var accountname = App.account
           // Render candidate Result
-          var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
+          var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + gmail + "</td><td>"+ accountname + "</td></tr>"
           candidatesResults.append(candidateTemplate);
 // console.log(candidateTemplate)
           // Render candidate ballot option
-          var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
+          var candidateOption = "<option value='" + id + "' >" + "Drive safe and secure" + "</ option>"
           candidatesSelect.append(candidateOption);
         });
       }
       return electionInstance.voters(App.account);
     }).then(function(hasVoted) {
       // Do not allow a user to vote
+      $('#text').hide();
+
       if(hasVoted) {
         $('form').hide();
+        $('#text').show();
       }
       loader.hide();
       content.show();

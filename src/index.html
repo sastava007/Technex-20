@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -21,7 +21,7 @@
     <div class="container" style="width: 650px;">
       <div class="row">
         <div class="col-lg-12">
-          <h1 class="text-center">Election Results</h1>
+          <h1 class="text-center">Payment Receipt</h1>
           <hr/>
           <br/>
           <div id="loader">
@@ -33,20 +33,22 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Votes</th>
+                  <th scope="col">Gmail</th>
+                  <th scope="col">Hash code</th>
                 </tr>
               </thead>
               <tbody id="candidatesResults">
               </tbody>
             </table>
             <hr/>
+            <div id="text">Your payment has been done</div>
             <form onSubmit="App.castVote(); return false;">
               <div class="form-group">
-                <label for="candidatesSelect">Select Candidate</label>
+                <label for="candidatesSelect">Make your Challan by clicking into given button</label>
                 <select class="form-control" id="candidatesSelect">
                 </select>
               </div>
-              <button type="submit" class="btn btn-primary">Vote</button>
+              <button type="submit" class="btn btn-primary">Click Here</button>
               <hr />
             </form>
             <p id="accountAddress" class="text-center"></p>
